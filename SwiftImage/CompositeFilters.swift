@@ -8,26 +8,26 @@
 
 import Foundation
 
-public func additionCompositing   (overlay: CIImage) -> Filter {return overlayFilter("CIAdditionCompositing")   (overlay)}
-public func colorBlendMode        (overlay: CIImage) -> Filter {return overlayFilter("CIColorBlendMode")        (overlay)}
-public func colorBurnBlendMode    (overlay: CIImage) -> Filter {return overlayFilter("CIColorBurnBlendMode")    (overlay)}
-public func colorDodgeBlendMode   (overlay: CIImage) -> Filter {return overlayFilter("CIColorDodgeBlendMode")   (overlay)}
-public func darkenBlendMode       (overlay: CIImage) -> Filter {return overlayFilter("CIDarkenBlendMode")       (overlay)}
-public func differenceBlendMode   (overlay: CIImage) -> Filter {return overlayFilter("CIDifferenceBlendMode")   (overlay)}
-public func exclusionBlendMode    (overlay: CIImage) -> Filter {return overlayFilter("CIExclusionBlendMode")    (overlay)}
-public func hardLightBlendMode    (overlay: CIImage) -> Filter {return overlayFilter("CIHardLightBlendMode")    (overlay)}
-public func hueBlendMode          (overlay: CIImage) -> Filter {return overlayFilter("CIHueBlendMode")          (overlay)}
-public func lightenBlendMode      (overlay: CIImage) -> Filter {return overlayFilter("CILightenBlendMode")      (overlay)}
-public func luminosityBlendMode   (overlay: CIImage) -> Filter {return overlayFilter("CILuminosityBlendMode")   (overlay)}
-public func maximumCompositing    (overlay: CIImage) -> Filter {return overlayFilter("CIMaximumCompositing")    (overlay)}
-public func minimumCompositing    (overlay: CIImage) -> Filter {return overlayFilter("CIMinimumCompositing")    (overlay)}
-public func multiplyBlendMode     (overlay: CIImage) -> Filter {return overlayFilter("CIMultiplyBlendMode")     (overlay)}
-public func multiplyCompositing   (overlay: CIImage) -> Filter {return overlayFilter("CIMultiplyCompositing")   (overlay)}
-public func overlayBlendMode      (overlay: CIImage) -> Filter {return overlayFilter("CIOverlayBlendMode")      (overlay)}
-public func saturationBlendMode   (overlay: CIImage) -> Filter {return overlayFilter("CISaturationBlendMode")   (overlay)}
-public func screenBlendMode       (overlay: CIImage) -> Filter {return overlayFilter("CIScreenBlendMode")       (overlay)}
-public func softLightBlendMode    (overlay: CIImage) -> Filter {return overlayFilter("CISoftLightBlendMode")    (overlay)}
-public func sourceAtopCompositing (overlay: CIImage) -> Filter {return overlayFilter("CISourceAtopCompositing") (overlay)}
-public func sourceInCompositing   (overlay: CIImage) -> Filter {return overlayFilter("CISourceInCompositing")   (overlay)}
-public func sourceOutCompositing  (overlay: CIImage) -> Filter {return overlayFilter("CISourceOutCompositing")  (overlay)}
-public func sourceOverCompositing (overlay: CIImage) -> Filter {return overlayFilter("CISourceOverCompositing") (overlay)}
+public func additionCompositing   (_ overlay: CIImage) -> Filter {return overlayFilter("CIAdditionCompositing")   (overlay)}
+public func colorBlendMode        (_ overlay: CIImage) -> Filter {return overlayFilter("CIColorBlendMode")        (overlay)}
+public func colorBurnBlendMode    (_ overlay: CIImage) -> Filter {return overlayFilter("CIColorBurnBlendMode")    (overlay)}
+public func colorDodgeBlendMode   (_ overlay: CIImage) -> Filter {return overlayFilter("CIColorDodgeBlendMode")   (overlay)}
+public func darkenBlendMode       (_ overlay: CIImage) -> Filter {return overlayFilter("CIDarkenBlendMode")       (overlay)}
+public func differenceBlendMode   (_ overlay: CIImage) -> Filter {return overlayFilter("CIDifferenceBlendMode")   (overlay)}
+public func exclusionBlendMode    (_ overlay: CIImage) -> Filter {return overlayFilter("CIExclusionBlendMode")    (overlay)}
+public func hardLightBlendMode    (_ overlay: CIImage) -> Filter {return overlayFilter("CIHardLightBlendMode")    (overlay)}
+public func hueBlendMode          (_ overlay: CIImage) -> Filter {return overlayFilter("CIHueBlendMode")          (overlay)}
+public func lightenBlendMode      (_ overlay: CIImage) -> Filter {return overlayFilter("CILightenBlendMode")      (overlay)}
+public func luminosityBlendMode   (_ overlay: CIImage) -> Filter {return overlayFilter("CILuminosityBlendMode")   (overlay)}
+public func maximumCompositing    (_ overlay: CIImage) -> Filter {return overlayFilter("CIMaximumCompositing")    (overlay)}
+public func minimumCompositing    (_ overlay: CIImage) -> Filter {return overlayFilter("CIMinimumCompositing")    (overlay)}
+public func multiplyBlendMode     (_ overlay: CIImage) -> Filter {return overlayFilter("CIMultiplyBlendMode")     (overlay)}
+public func multiplyCompositing   (_ overlay: CIImage) -> Filter {return overlayFilter("CIMultiplyCompositing")   (overlay)}
+public func overlayBlendMode      (_ overlay: CIImage) -> Filter {return overlayFilter("CIOverlayBlendMode")      (overlay)}
+public func saturationBlendMode   (_ overlay: CIImage) -> Filter {return overlayFilter("CISaturationBlendMode")   (overlay)}
+public func screenBlendMode       (_ overlay: CIImage) -> Filter {return overlayFilter("CIScreenBlendMode")       (overlay)}
+public func softLightBlendMode    (_ overlay: CIImage) -> Filter {return overlayFilter("CISoftLightBlendMode")    (overlay)}
+public func sourceAtopCompositing (_ overlay: CIImage) -> Filter {return overlayFilter("CISourceAtopCompositing") (overlay)}
+public func sourceInCompositing   (_ overlay: CIImage) -> Filter {return overlayFilter("CISourceInCompositing")   (overlay)}
+public func sourceOutCompositing  (_ overlay: CIImage) -> Filter {return overlayFilter("CISourceOutCompositing")  (overlay)}
+public func sourceOverCompositing (_ overlay: CIImage) -> Filter {return overlayFilter("CISourceOverCompositing") (overlay)}

@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - CICategoryColorEffect
 
-public func colorCrossPolynomial(redCoefficients: CIVector, greenCoefficients: CIVector, blueCoefficients: CIVector) -> Filter {
+public func colorCrossPolynomial(_ redCoefficients: CIVector, greenCoefficients: CIVector, blueCoefficients: CIVector) -> Filter {
     return { image in
         let parameters : CIParameters = [
             "inputRedCoefficients": redCoefficients,
@@ -18,74 +18,74 @@ public func colorCrossPolynomial(redCoefficients: CIVector, greenCoefficients: C
             "inputBlueCoefficients": blueCoefficients,
             kCIInputImageKey: image]
         let filter = CIFilter(name:"CIColorCrossPolynomial", withInputParameters:parameters)
-        return filter.outputImage
+        return filter!.outputImage!
     }
 }
 
-public func colorCube(dimension: Int, cube: NSData) -> Filter {
+public func colorCube(_ dimension: Int, cube: Data) -> Filter {
     return { image in
         let parameters : CIParameters = [
-            "inputCubeDimension": dimension,
-            "inputCubeData": cube,
+            "inputCubeDimension": dimension as AnyObject,
+            "inputCubeData": cube as AnyObject,
             kCIInputImageKey: image]
         let filter = CIFilter(name:"CIColorCube", withInputParameters:parameters)
-        return filter.outputImage
+        return filter!.outputImage!
     }
 }
 
-public func colorCubeWithColorSpace(dimension: Int, cube: NSData, colorSpace: CGColorSpaceRef) -> Filter {
+public func colorCubeWithColorSpace(_ dimension: Int, cube: Data, colorSpace: CGColorSpace) -> Filter {
     return { image in
         let parameters : CIParameters = [
-            "inputCubeDimension": dimension,
-            "inputCubeData": cube,
+            "inputCubeDimension": dimension as AnyObject,
+            "inputCubeData": cube as AnyObject,
             "inputColorSpace": colorSpace,
             kCIInputImageKey: image]
         let filter = CIFilter(name:"CIColorCubeWithColorSpace", withInputParameters:parameters)
-        return filter.outputImage
+        return filter!.outputImage!
     }
 }
 
 public func colorInvert() -> Filter {return singularFilter("CIColorInvert")}
 
-public func colorMap(gradientImage: CIImage) -> Filter {
+public func colorMap(_ gradientImage: CIImage) -> Filter {
     return { image in
         let parameters : CIParameters = [
             "inputGradientImage":gradientImage,
             kCIInputImageKey: image]
         let filter = CIFilter(name:"CIColorMap", withInputParameters:parameters)
-        return filter.outputImage
+        return filter!.outputImage!
     }
 }
 
-public func colorMonochrome(color: UIColor, intensity: Float) -> Filter {
+public func colorMonochrome(_ color: UIColor, intensity: Float) -> Filter {
     return { image in
         let parameters : CIParameters = [
-            kCIInputColorKey:CIColor(CGColor:color.CGColor),
-            kCIInputIntensityKey:intensity,
+            kCIInputColorKey:CIColor(cgColor:color.cgColor),
+            kCIInputIntensityKey:intensity as AnyObject,
             kCIInputImageKey: image]
         let filter = CIFilter(name:"CIColorMonochrome", withInputParameters:parameters)
-        return filter.outputImage
+        return filter!.outputImage!
     }
 }
 
-public func colorPosterize(levels: Float) -> Filter {
+public func colorPosterize(_ levels: Float) -> Filter {
     return { image in
         let parameters : CIParameters = [
-            "inputLevels":levels,
+            "inputLevels":levels as AnyObject,
             kCIInputImageKey: image]
         let filter = CIFilter(name:"CIColorPosterize", withInputParameters:parameters)
-        return filter.outputImage
+        return filter!.outputImage!
     }
 }
 
-public func falseColor(color0: UIColor, color1: UIColor) -> Filter {
+public func falseColor(_ color0: UIColor, color1: UIColor) -> Filter {
     return { image in
         let parameters : CIParameters = [
-            "inputColor0":CIColor(CGColor:color0.CGColor),
-            "inputColor1":CIColor(CGColor:color1.CGColor),
+            "inputColor0":CIColor(cgColor:color0.cgColor),
+            "inputColor1":CIColor(cgColor:color1.cgColor),
             kCIInputImageKey: image]
         let filter = CIFilter(name:"CIFalseColor", withInputParameters:parameters)
-        return filter.outputImage
+        return filter!.outputImage!
     }
 }
 
@@ -111,29 +111,29 @@ public func photoEffectTonal() -> Filter {return singularFilter("CIPhotoEffectTo
 
 public func photoEffectTransfer() -> Filter {return singularFilter("CIPhotoEffectTransfer")}
 
-public func sepiaTone(intensity: Float) -> Filter {
+public func sepiaTone(_ intensity: Float) -> Filter {
     return { image in
         let parameters : CIParameters = [
-            kCIInputIntensityKey:intensity,
+            kCIInputIntensityKey:intensity as AnyObject,
             kCIInputImageKey: image]
         let filter = CIFilter(name:"CISepiaTone", withInputParameters:parameters)
-        return filter.outputImage
+        return filter!.outputImage!
     }
 }
 
-public func vignette(radius: Float, intensity: Float) -> Filter {
-    return radiusIntensityFilter("CIVignette")(radius: radius, intensity: intensity)
+public func vignette(_ radius: Float, intensity: Float) -> Filter {
+    return radiusIntensityFilter("CIVignette")(radius, intensity)
 }
 
-func vignetteEffect(center: CGPoint, radius: Float, intensity: Float) -> Filter {
+func vignetteEffect(_ center: CGPoint, radius: Float, intensity: Float) -> Filter {
     return { image in
         let parameters : CIParameters = [
-            kCIInputCenterKey:CIVector(CGPoint:center),
-            kCIInputRadiusKey:radius,
-            kCIInputIntensityKey:intensity,
+            kCIInputCenterKey:CIVector(cgPoint:center),
+            kCIInputRadiusKey:radius as AnyObject,
+            kCIInputIntensityKey:intensity as AnyObject,
             kCIInputImageKey: image]
         let filter = CIFilter(name:"CIVignetteEffect", withInputParameters:parameters)
-        return filter.outputImage
+        return filter!.outputImage!
     }
 }
 

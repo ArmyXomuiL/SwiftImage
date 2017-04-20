@@ -10,31 +10,31 @@ import Foundation
 
 // MARK: - CICategoryBlur
 
-@availability(iOS, unavailable)
-public func boxBlur(radius: Float) -> Filter {return radiusFilter("CIBoxBlur")(radius:radius)}
+@available(iOS, unavailable)
+public func boxBlur(_ radius: Float) -> Filter {return radiusFilter("CIBoxBlur")(radius)}
 
-@availability(iOS, unavailable)
-public func discBlur(radius: Float) -> Filter {return radiusFilter("CIDiscBlur")(radius:radius)}
+@available(iOS, unavailable)
+public func discBlur(_ radius: Float) -> Filter {return radiusFilter("CIDiscBlur")(radius)}
 
-@availability(iOS, unavailable)
-public func medianBlur(radius: Float) -> Filter {return radiusFilter("CIMedianBlur")(radius:radius)}
+@available(iOS, unavailable)
+public func medianBlur(_ radius: Float) -> Filter {return radiusFilter("CIMedianBlur")(radius)}
 
-@availability(iOS, unavailable)
-public func motionBlur(radius: Float, angle: Float) -> Filter {
+@available(iOS, unavailable)
+public func motionBlur(_ radius: Float, angle: Float) -> Filter {
     return { image in
-        let parameters : CIParameters = [kCIInputRadiusKey: radius, kCIInputAngleKey: angle, kCIInputImageKey: image]
+        let parameters : CIParameters = [kCIInputRadiusKey: radius as AnyObject, kCIInputAngleKey: angle as AnyObject, kCIInputImageKey: image]
         let filter = CIFilter(name:"CIMotionBlur", withInputParameters:parameters)
-        return filter.outputImage
+        return filter!.outputImage!
     }
 }
 
-@availability(iOS, unavailable)
-public func noiseReduction(inputNoiseLevel: Float, inputSharpness: Float) -> Filter {
+@available(iOS, unavailable)
+public func noiseReduction(_ inputNoiseLevel: Float, inputSharpness: Float) -> Filter {
     return { image in
-        let parameters : CIParameters = ["inputNoiseLevel": inputNoiseLevel, "inputSharpness": inputSharpness, kCIInputImageKey: image]
+        let parameters : CIParameters = ["inputNoiseLevel": inputNoiseLevel as AnyObject, "inputSharpness": inputSharpness as AnyObject, kCIInputImageKey: image]
         let filter = CIFilter(name:"CIMotionBlur", withInputParameters:parameters)
-        return filter.outputImage
+        return filter!.outputImage!
     }
 }
 
-public func gaussianBlur(radius: Float) -> Filter {return radiusFilter("CIGaussianBlur")(radius:radius)}
+public func gaussianBlur(_ radius: Float) -> Filter {return radiusFilter("CIGaussianBlur")(radius)}

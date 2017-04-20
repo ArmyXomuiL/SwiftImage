@@ -11,7 +11,7 @@
 import UIKit
 import CoreImage
 
-public typealias Filter = CIImage -> CIImage
+public typealias Filter = (CIImage) -> CIImage
 
 public typealias CIParameters = Dictionary<String, AnyObject>
 
@@ -19,7 +19,7 @@ public typealias CIParameters = Dictionary<String, AnyObject>
 
 infix operator ~~> { associativity left }
 
-public func ~~> (filter1: Filter, filter2: Filter) -> Filter {
+public func ~~> (filter1: @escaping Filter, filter2: @escaping Filter) -> Filter {
     return { img in filter2(filter1(img)) }
 }
 
@@ -36,7 +36,7 @@ public extension CIVector {
     }
 }
 
-func colorOverlay(color: UIColor) -> Filter {
+func colorOverlay(_ color: UIColor) -> Filter {
     return { image in
         let overlay = colorGenerator(color)(image)
         return sourceOverCompositing(overlay)(image)

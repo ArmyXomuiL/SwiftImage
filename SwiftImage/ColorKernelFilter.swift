@@ -8,13 +8,13 @@
 
 import CoreImage
 
-public class ColorKernelFilter: CIFilter {
+open class ColorKernelFilter: CIFilter {
     var kernelString :String
     lazy var kernel :CIColorKernel = {
         return CIColorKernel(string: self.kernelString)
-        }()
+        }()!
     
-    var inputImage :CIImage?
+    var inputImage: CIImage?
     
     init(kernel: String) {
         kernelString = kernel
@@ -23,22 +23,22 @@ public class ColorKernelFilter: CIFilter {
     
     required public init(coder aDecoder: NSCoder) {
         kernelString = ""
-        super.init(coder: aDecoder)
-        if let k = aDecoder.decodeObjectForKey("SwiftImageKernelStringKey") as? String {
+        super.init(coder: aDecoder)!
+        if let k = aDecoder.decodeObject(forKey: "SwiftImageKernelStringKey") as? String {
             kernelString = k
         }
     }
     
-    override public func encodeWithCoder(aCoder: NSCoder) {
-        super.encodeWithCoder(aCoder)
-        aCoder.encodeObject(kernelString, forKey: "SwiftImageKernelStringKey")
+    override open func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+        aCoder.encode(kernelString, forKey: "SwiftImageKernelStringKey")
     }
-    
-    func outputImage() -> CIImage? {
+  
+    func resultImage() -> CIImage? {
         if inputImage == nil {
             return nil
         }
-        return kernel.applyWithExtent(inputImage!.extent(), arguments: [inputImage!])
+        return kernel.apply(withExtent: inputImage!.extent, arguments: [inputImage!])
     }
 }
 

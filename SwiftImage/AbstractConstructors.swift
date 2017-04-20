@@ -10,19 +10,19 @@ import Foundation
 
 // MARK: - Abstract Filter Generators
 
-func singularFilter(filterName: String) -> Filter {
+func singularFilter(_ filterName: String) -> Filter {
     return { image in
         let parameters : CIParameters = [
             kCIInputImageKey: image
         ]
         let filter = CIFilter(name:filterName, withInputParameters: parameters)
-        return filter.outputImage
+        return filter!.outputImage!
     }
 }
 
-typealias Overlay = CIImage -> Filter
+typealias Overlay = (CIImage) -> Filter
 
-func overlayFilter(filterName: String) -> Overlay {
+func overlayFilter(_ filterName: String) -> Overlay {
     return {overlay in
         return { image in
             let parameters : CIParameters = [
@@ -30,57 +30,57 @@ func overlayFilter(filterName: String) -> Overlay {
                 kCIInputImageKey: overlay
             ]
             let filter = CIFilter(name:filterName, withInputParameters: parameters)
-            return filter.outputImage
+            return filter!.outputImage!
         }
     }
 }
 
-func radiusFilter(name: String) -> (radius: Float) -> Filter {
+func radiusFilter(_ name: String) -> (_ radius: Float) -> Filter {
     return { radius in
         return { image in
-            let parameters : CIParameters = [kCIInputRadiusKey: radius, kCIInputImageKey: image]
+            let parameters : CIParameters = [kCIInputRadiusKey: radius as AnyObject, kCIInputImageKey: image]
             let filter = CIFilter(name:name, withInputParameters:parameters)
-            return filter.outputImage
+            return filter!.outputImage!
         }
     }
 }
 
-func radiusIntensityFilter(name: String) -> (radius: Float, intensity :Float) -> Filter {
+func radiusIntensityFilter(_ name: String) -> (_ radius: Float, _ intensity :Float) -> Filter {
     return { radius, intensity in
         return { image in
             let parameters : CIParameters = [
-                kCIInputRadiusKey:radius,
-                kCIInputIntensityKey:intensity,
+                kCIInputRadiusKey:radius as AnyObject,
+                kCIInputIntensityKey:intensity as AnyObject,
                 kCIInputImageKey: image]
             let filter = CIFilter(name:name, withInputParameters:parameters)
-            return filter.outputImage
+            return filter!.outputImage!
         }
     }
 }
 
-func centerRadiusFilter(name: String) -> (center :CGPoint, radius: Float) -> Filter {
+func centerRadiusFilter(_ name: String) -> (_ center :CGPoint, _ radius: Float) -> Filter {
     return { center, radius in
         return { image in
             let parameters : CIParameters = [
-                kCIInputRadiusKey:radius,
-                kCIInputCenterKey:CIVector(CGPoint:center),
+                kCIInputRadiusKey:radius as AnyObject,
+                kCIInputCenterKey:CIVector(cgPoint:center),
                 kCIInputImageKey: image]
             let filter = CIFilter(name:name, withInputParameters:parameters)
-            return filter.outputImage
+            return filter!.outputImage!
         }
     }
 }
 
-func convolutionFixedFilter(name: String) -> (weights: CIVector, bias :Float) -> Filter {
+func convolutionFixedFilter(_ name: String) -> (_ weights: CIVector, _ bias :Float) -> Filter {
     return { weights, bias in
         return { image in
             let parameters : CIParameters = [
                 "inputWeights": weights,
-                "inputBias": bias,
+                "inputBias": bias as AnyObject,
                 kCIInputImageKey: image
             ]
             let filter = CIFilter(name:name, withInputParameters: parameters)
-            return filter.outputImage
+            return filter!.outputImage!
         }
     }
 }
